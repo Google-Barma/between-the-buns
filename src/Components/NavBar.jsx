@@ -1,0 +1,64 @@
+import styled from 'styled-components';
+import logoImg from '../image/logo.svg';
+import logIn from '../image/sign.svg';
+
+const NavBarStyled = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  height: 80px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #299b01;
+  color: white;
+`;
+
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const H1 = styled.h1`
+  font-size: 24px;
+  margin-left: 15px;
+`;
+
+const ImgLogo = styled.img`
+  width: 50px;
+`;
+
+const ImageLogIn = styled.img`
+  padding-bottom: 5px;
+`;
+
+const ButtonLogIn = styled.button`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+`;
+
+export default function NavBar({ children }) {
+  return (
+    <NavBarStyled>
+      <Logo>
+        <ImgLogo src={logoImg} alt="logo" />
+        <H1>BetweenTheBuns</H1>
+      </Logo>
+
+      <ButtonLogIn type="button">
+        <ImageLogIn src={logIn} alt="logIn" />
+        Войти
+      </ButtonLogIn>
+    </NavBarStyled>
+  );
+}
