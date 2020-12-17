@@ -44,10 +44,9 @@ const ButtonLogIn = styled.button`
   border: none;
   color: white;
   text-transform: uppercase;
-  cursor: pointer;
 `;
 
-export default function NavBar({ children }) {
+export default function NavBar() {
   return (
     <NavBarStyled>
       <Logo>
