@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import dbMenu from './DBMenu';
 import ListItem from './ListItem';
-import bannerImg from '../image/banner.jpg';
+import Banner from './Banner';
 
 const MenuStyled = styled.main`
   background-color: #ccc;
@@ -12,23 +12,17 @@ const SectionMenu = styled.section`
   padding: 30px;
 `;
 
-const Banner = styled.div`
-  width: 100%;
-  height: 211px;
-  background-image: ${`url(${bannerImg})`};
-`;
-
-export default function Menu() {
+export default function Menu({ setOpenItem }) {
   return (
     <MenuStyled>
       <Banner />
       <SectionMenu>
         <h2>Бургеры</h2>
-        <ListItem itemList={dbMenu.burger} />
+        <ListItem itemList={dbMenu.burger} setOpenItem={setOpenItem} />
       </SectionMenu>
       <SectionMenu>
         <h2>Закуски / Напитки</h2>
-        <ListItem itemList={dbMenu.other} />
+        <ListItem itemList={dbMenu.other} setOpenItem={setOpenItem} />
       </SectionMenu>
     </MenuStyled>
   );
