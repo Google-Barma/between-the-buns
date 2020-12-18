@@ -7,7 +7,6 @@ import ModalItem from './Components/ModalItem';
 function App() {
   const [openItem, setOpenItem] = useState(null);
 
-  console.log('Item', openItem);
   return (
     <>
       <GlobalStyle />
