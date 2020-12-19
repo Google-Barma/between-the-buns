@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ButtonCheckout from '../ButtonCheckout';
+import ButtonCheckout from '../Modal/ButtonCheckout';
 import OrderListItem from './OrderListItem';
 
 const OrderStyles = styled.section`
