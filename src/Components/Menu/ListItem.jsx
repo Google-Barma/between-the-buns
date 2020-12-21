@@ -1,35 +1,10 @@
 import styled from 'styled-components';
+import s from './Menu.module.css';
 
-const List = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-`;
+const List = styled.ul``;
 
 const Item = styled.li`
-  position: relative;
-  width: 400px;
-  height: 155px;
-  font-size: 30px;
-  background-image: ${({ img }) => `url(${img})`};
-  background-position: center;
-  background-size: cover;
-  margin-top: 30px;
-  margin-right: 30px;
-  margin: 30px;
-  padding: 15px;
-  color: white;
-  z-index: 1;
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: black;
-    opacity: 50%;
-    z-index: -1;
+  
   }
 
   &:hover {
@@ -42,10 +17,16 @@ const Item = styled.li`
 `;
 
 export default function ListItem({ itemList, setOpenItem }) {
+  console.log(itemList);
   return (
-    <List>
+    <ul className={s.listItem}>
       {itemList.map(item => (
-        <Item key={item.id} img={item.img} onClick={() => setOpenItem(item)}>
+        <li
+          className={s.item}
+          key={item.id}
+          img={item.img}
+          onClick={() => setOpenItem(item)}
+        >
           <p>{item.name}</p>
           <p>
             {item.price.toLocaleString('ru-RU', {
@@ -53,8 +34,9 @@ export default function ListItem({ itemList, setOpenItem }) {
               currency: 'UAH',
             })}
           </p>
-        </Item>
+          <img src={item.img} alt="" />
+        </li>
       ))}
-    </List>
+    </ul>
   );
 }

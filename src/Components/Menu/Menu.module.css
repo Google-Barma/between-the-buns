@@ -1,0 +1,44 @@
+.bannerImage {
+  color: #ffffff;
+  width: 100%;
+  height: 980px;
+  box-shadow: inset 0px 0px 60px 55px #000000;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(../../image/banner.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 300px;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 70px 100px;
+}
+
+.title {
+  max-width: 800px;
+  font-size: 70px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.descriptionWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 100px 0 0;
+}
+
+.description {
+  font-size: 30px;
+  max-width: 600px;
+  font-style: italic;
+  text-align: right;
+}
+
+.listItem {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(320px, 1fr));
+  grid-gap: 16px;
+}

@@ -1,5 +1,4 @@
 // import { useState } from 'react';
-import GlobalStyle from './Components/Style/GlobalStyle';
 import NavBar from './Components/NavBar/NavBar';
 import Menu from './Components/Menu/Menu';
 import ModalItem from './Components/Modal/ModalItem';
@@ -13,9 +12,8 @@ function App() {
 
   return (
     <>
-      <GlobalStyle />
       <NavBar />
-      <Order {...orders} />
+      {/* <Order {...orders} /> */}
       <Menu {...openItem} />
       {openItem.openItem && <ModalItem {...openItem} {...orders} />}
     </>

@@ -1,30 +1,20 @@
-import styled from 'styled-components';
+import s from './Menu.module.css';
 import dbMenu from '../DBMenu';
 import ListItem from './ListItem';
 import Banner from './Banner';
 
-const MenuStyled = styled.main`
-  background-color: #ccc;
-  margin-top: 80px;
-  margin-left: 380px;
-`;
-
-const SectionMenu = styled.section`
-  padding: 30px;
-`;
-
 export default function Menu({ setOpenItem }) {
   return (
-    <MenuStyled>
+    <main className={s.main}>
       <Banner />
-      <SectionMenu>
+      <section>
         <h2>Бургеры</h2>
         <ListItem itemList={dbMenu.burger} setOpenItem={setOpenItem} />
-      </SectionMenu>
-      <SectionMenu>
+      </section>
+      <section>
         <h2>Закуски / Напитки</h2>
         <ListItem itemList={dbMenu.other} setOpenItem={setOpenItem} />
-      </SectionMenu>
-    </MenuStyled>
+      </section>
+    </main>
   );
 }
