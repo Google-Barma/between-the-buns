@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import s from './ModalItem.module.css';
 import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 

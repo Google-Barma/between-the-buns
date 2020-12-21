@@ -1,0 +1,49 @@
+.closeSection {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 80px;
+  left: 0;
+  background-color: rgba(26, 26, 26, 0.9);
+  width: 300px;
+  height: calc(100% - 80px);
+  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  z-index: 20;
+  transition: all 0.3s linear;
+}
+
+.openSection {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 80px;
+  left: -300px;
+  background-color: rgba(26, 26, 26, 0.9);
+  width: 300px;
+  height: calc(100% - 80px);
+  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  z-index: 20;
+  transition: all 0.3s linear;
+}
+
+.title {
+  text-align: center;
+}
+
+.orderContent {
+  flex-grow: 1;
+}
+
+.openOrdersBtn {
+  position: absolute;
+  top: 45%;
+  right: -65px;
+  width: 70px;
+  height: 100px;
+  border-color: rgba(26, 26, 26, 0.9);
+  border-radius: 5px;
+  background-color: rgba(26, 26, 26, 0.9);
+  outline: none;
+}

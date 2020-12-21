@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <NavBar />
-      {/* <Order {...orders} /> */}
+      <Order {...orders} />
       <Menu {...openItem} />
       {openItem.openItem && <ModalItem {...openItem} {...orders} />}
     </>

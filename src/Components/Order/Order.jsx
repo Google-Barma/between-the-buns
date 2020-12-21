@@ -1,60 +1,41 @@
-import styled from 'styled-components';
-
+import s from './Order.module.css';
+import { useState, useEffect } from 'react';
+import { GiCardboardBox } from 'react-icons/gi';
 import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import OrderListItem from './OrderListItem';
 
-const OrderStyles = styled.section`
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  top: 80px;
-  left: 0px;
-  background: #fff;
-  width: 300px;
-  height: calc(100% - 80px);
-  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
-  padding: 20px;
-`;
-
-const OrderTitle = styled.h2`
-  text-align: center;
-`;
-
-const OrderContent = styled.div`
-  flex-grow: 1;
-`;
-
-const OrderList = styled.ul``;
-
-const Total = styled.div``;
-
-const TotalPrice = styled.span``;
-
-const EmptyList = styled.p`
-  text-align: center;
-`;
-
 export default function Order({ orders }) {
+  const [isOrderOpen, setIsOrderOpen] = useState(false);
+
+  const toggleOrderWindow = () => setIsOrderOpen(!isOrderOpen);
+
   return (
-    <OrderStyles>
-      <OrderTitle>ВАШ ЗАКАЗ</OrderTitle>
-      <OrderContent>
+    <section className={isOrderOpen ? `${s.closeSection}` : `${s.openSection}`}>
+      <button
+        className={s.openOrdersBtn}
+        type="button"
+        onClick={() => toggleOrderWindow()}
+      >
+        <GiCardboardBox size="60" color="#FFDF1F" />
+      </button>
+      <h2 className={s.title}>ВАШ ЗАКАЗ</h2>
+      <div className={s.orderContent}>
         {orders.length ? (
-          <OrderList>
+          <ul>
             {orders.map(order => (
               <OrderListItem order={order} key={order.id} />
             ))}
-          </OrderList>
+          </ul>
         ) : (
-          <EmptyList>Список заказов пуст</EmptyList>
+          <p className={s.emptyList}>Список заказов пуст</p>
         )}
-      </OrderContent>
-      <Total>
+      </div>
+      <div>
         <span>Итого:</span>
         <span>5</span>
-        <TotalPrice>850грн</TotalPrice>
-      </Total>
+        <span>850грн</span>
+      </div>
       <CheckoutButton buttonName="Оформить"></CheckoutButton>
-    </OrderStyles>
+    </section>
   );
 }
