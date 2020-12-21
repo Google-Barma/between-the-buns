@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import CheckoutButton from '../Modal/CheckoutButton/CheckoutButton';
+import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import OrderListItem from './OrderListItem';
 
 const OrderStyles = styled.section`
