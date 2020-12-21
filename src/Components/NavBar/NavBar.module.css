@@ -21,23 +21,6 @@
   border-bottom: 1px rgba(255, 255, 255, 0.2) solid;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.title {
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 900;
-  font-size: 30px;
-  margin-left: 15px;
-}
-
-.logoImage {
-  width: 50px;
-}
-
 .loginImage {
   margin-bottom: 10px;
 }

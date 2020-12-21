@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ButtonCheckout from './ButtonCheckout';
+import CheckoutButton from './CheckoutButton/CheckoutButton';
 
 const Overlay = styled.div`
   position: fixed;
@@ -68,7 +68,10 @@ export default function ModalItem({
             <h2>{openItem.name}</h2>
             <p>{openItem.price}</p>
           </HeaderContent>
-          <ButtonCheckout onClick={addToOrder}>Добавить</ButtonCheckout>
+          <CheckoutButton
+            onAddToOrder={addToOrder}
+            buttonName="Добавить к заказу"
+          ></CheckoutButton>
         </Content>
       </Modal>
     </Overlay>

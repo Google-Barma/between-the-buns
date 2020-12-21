@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import ButtonCheckout from '../Modal/ButtonCheckout';
+
+import CheckoutButton from '../Modal/CheckoutButton/CheckoutButton';
 import OrderListItem from './OrderListItem';
 
 const OrderStyles = styled.section`
@@ -9,7 +10,7 @@ const OrderStyles = styled.section`
   top: 80px;
   left: 0px;
   background: #fff;
-  width: 0;
+  width: 300px;
   height: calc(100% - 80px);
   box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
   padding: 20px;
@@ -53,7 +54,7 @@ export default function Order({ orders }) {
         <span>5</span>
         <TotalPrice>850грн</TotalPrice>
       </Total>
-      <ButtonCheckout>Оформить</ButtonCheckout>
+      <CheckoutButton buttonName="Оформить"></CheckoutButton>
     </OrderStyles>
   );
 }
