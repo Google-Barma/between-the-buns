@@ -6,7 +6,7 @@ export default function OrderListItem({ order }) {
     <li className={s.list} key={order.id}>
       <div className={s.orderContent}>
         <p className={s.name}>{order.name}</p>
-        <span className={s.quantity}>2 шт.</span>
+        <span className={s.quantity}>{order.count} шт.</span>
         <span className={s.price}>
           {order.price.toLocaleString('ru-RU', {
             style: 'currency',

@@ -9,6 +9,9 @@ export default function Order({ orders }) {
 
   const toggleOrderWindow = () => setIsOrderOpen(!isOrderOpen);
 
+  const countTotalPrice = () =>
+    orders.reduce((total, order) => total + order.price * order.count, 0);
+
   return (
     <section className={isOrderOpen ? `${s.closeSection}` : `${s.openSection}`}>
       <button
@@ -18,7 +21,9 @@ export default function Order({ orders }) {
       >
         <GiCardboardBox size="60" color="#FFDF1F" />
       </button>
+
       <h2 className={s.title}>ВАШ ЗАКАЗ</h2>
+
       <div className={s.orderContent}>
         {orders.length ? (
           <ul>
@@ -30,10 +35,9 @@ export default function Order({ orders }) {
           <p className={s.emptyList}>Список заказов пуст</p>
         )}
       </div>
+
       <div>
-        <span>Итого:</span>
-        <span>5</span>
-        <span>850грн</span>
+        <span>Сумма: {countTotalPrice()}</span>
       </div>
       <CheckoutButton buttonName="Оформить"></CheckoutButton>
     </section>

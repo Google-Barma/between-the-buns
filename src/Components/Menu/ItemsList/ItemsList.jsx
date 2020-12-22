@@ -1,5 +1,5 @@
 import s from './ItemsList.module.css';
-import localizePrice from '../../../functions/localizePrice';
+import { localizePrice } from '../../../functions/secondaryFunctions';
 
 export default function ListItem({ itemList, setOpenItem }) {
   return (

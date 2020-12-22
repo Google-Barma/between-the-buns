@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import useCount from '../Hooks/useCount';
 import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import CountItem from '../Elems/CountItem/CountItem';
-import localizePrice from '../../functions/localizePrice';
+import { localizePrice } from '../../functions/secondaryFunctions';
 
 const modalRoot = document.querySelector('#modal-root');
 
