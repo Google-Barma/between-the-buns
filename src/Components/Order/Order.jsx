@@ -42,8 +42,8 @@ export default function Order({ orders }) {
         )}
       </div>
 
-      <div>
-        <span>Количество: {countTotalItem()}</span>
+      <div className={s.orderResult}>
+        <span>Кол-во: {countTotalItem()}</span>
         <span>Сумма: {localizePrice(totalPrice)}</span>
       </div>
       <CheckoutButton buttonName="Оформить"></CheckoutButton>

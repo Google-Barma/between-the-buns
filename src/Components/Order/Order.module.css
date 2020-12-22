@@ -47,3 +47,8 @@
   background-color: rgba(26, 26, 26, 0.9);
   outline: none;
 }
+
+.orderResult {
+  display: flex;
+  flex-direction: column;
+}
