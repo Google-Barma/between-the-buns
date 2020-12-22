@@ -1,5 +1,5 @@
 import s from './Order.module.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { GiCardboardBox } from 'react-icons/gi';
 import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import OrderListItem from './OrderListItem';
