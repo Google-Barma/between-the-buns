@@ -5,4 +5,8 @@ function localizePrice(price) {
   });
 }
 
-export { localizePrice };
+function totalPrice(price, count) {
+  return price * count;
+}
+
+export { localizePrice, totalPrice };

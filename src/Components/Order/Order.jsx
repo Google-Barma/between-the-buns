@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { GiCardboardBox } from 'react-icons/gi';
 import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import OrderListItem from './OrderListItem';
+import { localizePrice } from '../../functions/secondaryFunctions';
 
 export default function Order({ orders }) {
   const [isOrderOpen, setIsOrderOpen] = useState(false);
@@ -37,7 +38,7 @@ export default function Order({ orders }) {
       </div>
 
       <div>
-        <span>Сумма: {countTotalPrice()}</span>
+        <span>Сумма: {localizePrice(countTotalPrice())}</span>
       </div>
       <CheckoutButton buttonName="Оформить"></CheckoutButton>
     </section>

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import useCount from '../Hooks/useCount';
 import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import CountItem from '../Elems/CountItem/CountItem';
-import { localizePrice } from '../../functions/secondaryFunctions';
+import { localizePrice, totalPrice } from '../../functions/secondaryFunctions';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -28,8 +28,6 @@ export default function ModalItem({
     setOpenItem(null);
   };
 
-  const totalPrice = () => openItem.price * counter.count;
-
   return createPortal(
     <div className={s.overlay} id="overlay" onClick={closeModal}>
       <div className={s.modal}>
@@ -38,7 +36,10 @@ export default function ModalItem({
           <img className={s.image} src={openItem.img} alt={openItem.name} />
         </div>
         <p className={s.price}>{openItem.price}</p>
-        <p>Общая сумма: {localizePrice(totalPrice())}</p>
+        <p>
+          Общая сумма:{' '}
+          {localizePrice(totalPrice(openItem.price, counter.count))}
+        </p>
         <CountItem {...counter} />
         <CheckoutButton
           onAddToOrder={addToOrder}

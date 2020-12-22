@@ -1,5 +1,6 @@
 import { GiTrashCan } from 'react-icons/gi';
 import s from './OrderListItem.module.css';
+import { localizePrice, totalPrice } from '../../functions/secondaryFunctions';
 
 export default function OrderListItem({ order }) {
   return (
@@ -8,10 +9,7 @@ export default function OrderListItem({ order }) {
         <p className={s.name}>{order.name}</p>
         <span className={s.quantity}>{order.count} шт.</span>
         <span className={s.price}>
-          {order.price.toLocaleString('ru-RU', {
-            style: 'currency',
-            currency: 'UAH',
-          })}
+          {localizePrice(totalPrice(order.count, order.price))}
         </span>
       </div>
       <button className={s.trashBtn} type="button">
