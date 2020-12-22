@@ -1,7 +1,10 @@
 import s from './ModalItem.module.css';
 import { createPortal } from 'react-dom';
+import useCount from '../Hooks/useCount';
 import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import CountItem from '../Elems/CountItem/CountItem';
+import localizePrice from '../../functions/localizePrice';
+
 const modalRoot = document.querySelector('#modal-root');
 
 export default function ModalItem({
@@ -9,22 +12,23 @@ export default function ModalItem({
   setOpenItem,
   orders,
   setOrders,
-  count,
 }) {
+  const counter = useCount();
+
   const closeModal = e => {
     if (e.target.id === 'overlay') {
       setOpenItem(null);
     }
   };
 
-  const order = { ...openItem, count };
+  const order = { ...openItem, count: counter.count };
 
   const addToOrder = () => {
     setOrders([...orders, order]);
     setOpenItem(null);
   };
 
-  const countTotalPrice = count => count * openItem.price;
+  const totalPrice = () => openItem.price * counter.count;
 
   return createPortal(
     <div className={s.overlay} id="overlay" onClick={closeModal}>
@@ -34,8 +38,8 @@ export default function ModalItem({
           <img className={s.image} src={openItem.img} alt={openItem.name} />
         </div>
         <p className={s.price}>{openItem.price}</p>
-        <p>Общая сумма: {countTotalPrice(count)}</p>
-        <CountItem />
+        <p>Общая сумма: {localizePrice(totalPrice())}</p>
+        <CountItem {...counter} />
         <CheckoutButton
           onAddToOrder={addToOrder}
           buttonName="Добавить к заказу"

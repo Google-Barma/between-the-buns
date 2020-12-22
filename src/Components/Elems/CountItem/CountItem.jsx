@@ -1,11 +1,8 @@
-import useCount from '../../hooks/useCount';
 import s from './CountItem.module.css';
 
-export default function CountItem() {
-  const { count, setCount, handleChangeCount } = useCount();
-
+export default function CountItem({ count, setCount, handleChangeCount }) {
   return (
-    <>
+    <div>
       <button
         className={s.quantityBtn}
         disabled={count <= 1}
@@ -17,8 +14,8 @@ export default function CountItem() {
       <input
         className={s.quantity}
         type="number"
-        value={count}
-        onChange={e => handleChangeCount(e)}
+        value={count < 1 ? 1 : count}
+        onChange={handleChangeCount}
       />
       <button
         className={s.quantityBtn}
@@ -27,6 +24,6 @@ export default function CountItem() {
       >
         +
       </button>
-    </>
+    </div>
   );
 }

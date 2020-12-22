@@ -1,4 +1,5 @@
 import s from './ItemsList.module.css';
+import localizePrice from '../../../functions/localizePrice';
 
 export default function ListItem({ itemList, setOpenItem }) {
   return (
@@ -12,12 +13,7 @@ export default function ListItem({ itemList, setOpenItem }) {
         >
           <div className={s.description}>
             <p className={s.name}>{item.name}</p>
-            <p className={s.price}>
-              {item.price.toLocaleString('ru-RU', {
-                style: 'currency',
-                currency: 'UAH',
-              })}
-            </p>
+            <p className={s.price}>{localizePrice(item.price)}</p>
           </div>
           <img className={s.image} src={item.img} alt={item.name} />
         </li>
