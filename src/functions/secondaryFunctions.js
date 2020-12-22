@@ -5,8 +5,11 @@ function localizePrice(price) {
   });
 }
 
-function totalPrice(price, count) {
-  return price * count;
+function totalPrice(order) {
+  const countTopping = order.topping.filter(item => item.checked).length;
+  const priceTopping = order.price * 0.1 * countTopping;
+
+  return (order.price + priceTopping) * order.count;
 }
 
 export { localizePrice, totalPrice };
