@@ -13,6 +13,11 @@ export default function Order({ orders }) {
   const countTotalPrice = () =>
     orders.reduce((total, order) => total + order.price * order.count, 0);
 
+  const countTotalItem = () =>
+    orders.reduce((result, order) => result + order.count, 0);
+
+  const totalPrice = countTotalPrice();
+
   return (
     <section className={isOrderOpen ? `${s.closeSection}` : `${s.openSection}`}>
       <button
@@ -38,7 +43,8 @@ export default function Order({ orders }) {
       </div>
 
       <div>
-        <span>Сумма: {localizePrice(countTotalPrice())}</span>
+        <span>Количество: {countTotalItem()}</span>
+        <span>Сумма: {localizePrice(totalPrice)}</span>
       </div>
       <CheckoutButton buttonName="Оформить"></CheckoutButton>
     </section>

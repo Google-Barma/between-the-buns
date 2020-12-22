@@ -28,6 +28,8 @@ export default function ModalItem({
     setOpenItem(null);
   };
 
+  const total = totalPrice(openItem.price, counter.count);
+
   return createPortal(
     <div className={s.overlay} id="overlay" onClick={closeModal}>
       <div className={s.modal}>
@@ -36,10 +38,7 @@ export default function ModalItem({
           <img className={s.image} src={openItem.img} alt={openItem.name} />
         </div>
         <p className={s.price}>{openItem.price}</p>
-        <p>
-          Общая сумма:{' '}
-          {localizePrice(totalPrice(openItem.price, counter.count))}
-        </p>
+        <p>Общая сумма: {localizePrice(total)}</p>
         <CountItem {...counter} />
         <CheckoutButton
           onAddToOrder={addToOrder}
