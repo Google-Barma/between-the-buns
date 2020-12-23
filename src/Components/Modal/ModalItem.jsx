@@ -5,7 +5,9 @@ import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import CountItem from '../Elems/CountItem/CountItem';
 import { localizePrice, totalPrice } from '../../functions/secondaryFunctions';
 import Toppings from './Toppings/Toppings';
+import Choices from './Choices';
 import useToppings from '../Hooks/useToppings';
+import useChoices from '../Hooks/useChoices';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -15,9 +17,9 @@ export default function ModalItem({
   orders,
   setOrders,
 }) {
-  const toppings = useToppings(openItem);
-
   const counter = useCount();
+  const toppings = useToppings(openItem);
+  const choices = useChoices(openItem);
 
   const closeModal = e => {
     if (e.target.id === 'overlay') {
@@ -29,6 +31,7 @@ export default function ModalItem({
     ...openItem,
     count: counter.count,
     topping: toppings.toppings,
+    choice: choices.choice,
   };
 
   const addToOrder = () => {
@@ -46,13 +49,15 @@ export default function ModalItem({
           <img className={s.image} src={openItem.img} alt={openItem.name} />
         </div>
 
-        <Toppings {...toppings} />
+        {openItem.toppings && <Toppings {...toppings} />}
+        {openItem.choices && <Choices {...choices} openItem={openItem} />}
 
         <p className={s.price}>Цена: {openItem.price}</p>
         <p>Общая сумма: {localizePrice(total)}</p>
         <CountItem {...counter} />
         <CheckoutButton
           onAddToOrder={addToOrder}
+          isChoices={order.choices && !order.choice}
           buttonName="Добавить к заказу"
         ></CheckoutButton>
       </div>

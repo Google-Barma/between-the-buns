@@ -6,7 +6,8 @@ function localizePrice(price) {
 }
 
 function totalPrice(order) {
-  const countTopping = order.topping.filter(item => item.checked).length;
+  const selectedToppings = order.topping ? order.topping : [];
+  const countTopping = selectedToppings.filter(item => item.checked).length;
   const priceTopping = order.price * 0.1 * countTopping;
 
   return (order.price + priceTopping) * order.count;

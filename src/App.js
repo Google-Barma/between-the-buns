@@ -9,6 +9,7 @@ import useOrders from './Components/Hooks/useOrders';
 function App() {
   const openItem = useOpenItem();
   const orders = useOrders();
+  console.log(orders);
 
   return (
     <>
