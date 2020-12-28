@@ -2,7 +2,13 @@ import { GiTrashCan } from 'react-icons/gi';
 import s from './OrderListItem.module.css';
 import { localizePrice, totalPrice } from '../../functions/secondaryFunctions';
 
-export default function OrderListItem({ order, onDeleteItem }) {
+export default function OrderListItem({
+  order,
+  id,
+  onDeleteItem,
+  setOpenItem,
+  index,
+}) {
   const topping = order.topping
     .filter(item => item.checked)
     .map(item => item.name)
@@ -11,7 +17,11 @@ export default function OrderListItem({ order, onDeleteItem }) {
   const price = totalPrice(order);
 
   return (
-    <li className={s.list} key={order.id}>
+    <li
+      className={s.list}
+      key={order.id}
+      onClick={() => setOpenItem({ ...order, index })}
+    >
       <div className={s.orderContent}>
         <p className={s.name}>{order.name}</p>
         <p className={s.name}>{order.choices && order.choices}</p>

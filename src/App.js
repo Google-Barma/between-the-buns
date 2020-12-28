@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <Order {...orders} />
+      <Order {...orders} {...openItem} />
       <Menu {...openItem} />
       {openItem.openItem && <ModalItem {...openItem} {...orders} />}
     </>

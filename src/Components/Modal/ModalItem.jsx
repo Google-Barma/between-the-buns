@@ -20,6 +20,7 @@ export default function ModalItem({
   const counter = useCount();
   const toppings = useToppings(openItem);
   const choices = useChoices(openItem);
+  const isEdit = openItem.index > -1;
 
   const closeModal = e => {
     if (e.target.id === 'overlay') {
@@ -32,6 +33,12 @@ export default function ModalItem({
     count: counter.count,
     topping: toppings.toppings,
     choice: choices.choice,
+  };
+
+  const editOrder = () => {
+    const newOrders = [...orders];
+    newOrders[openItem.id] = order;
+    setOrders(newOrders);
   };
 
   const addToOrder = () => {
@@ -56,7 +63,7 @@ export default function ModalItem({
         <p>Общая сумма: {localizePrice(total)}</p>
         <CountItem {...counter} />
         <CheckoutButton
-          onAddToOrder={addToOrder}
+          onAddToOrder={isEdit ? editOrder : addToOrder}
           isChoices={order.choices && !order.choice}
           buttonName="Добавить к заказу"
         ></CheckoutButton>

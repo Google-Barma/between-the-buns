@@ -6,7 +6,7 @@ import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import OrderListItem from './OrderListItem';
 import { localizePrice, totalPrice } from '../../functions/secondaryFunctions';
 
-export default function Order({ orders, setOrders }) {
+export default function Order({ orders, setOrders, setOpenItem }) {
   const [isOrderOpen, setIsOrderOpen] = useState(false);
   console.log(orders);
 
@@ -45,11 +45,13 @@ export default function Order({ orders, setOrders }) {
       <div className={s.orderContent}>
         {orders.length ? (
           <ul>
-            {orders.map(order => (
+            {orders.map((order, idx) => (
               <OrderListItem
                 order={order}
-                key={order.id}
+                id={order.id}
+                index={idx}
                 onDeleteItem={deleteItemFromOrder}
+                setOpenItem={setOpenItem}
               />
             ))}
           </ul>
