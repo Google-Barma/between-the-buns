@@ -17,7 +17,7 @@ export default function ModalItem({
   orders,
   setOrders,
 }) {
-  const counter = useCount();
+  const counter = useCount(openItem.count);
   const toppings = useToppings(openItem);
   const choices = useChoices(openItem);
   const isEdit = openItem.index > -1;
@@ -37,8 +37,9 @@ export default function ModalItem({
 
   const editOrder = () => {
     const newOrders = [...orders];
-    newOrders[openItem.id] = order;
+    newOrders[openItem.index] = order;
     setOrders(newOrders);
+    setOpenItem(null);
   };
 
   const addToOrder = () => {
@@ -65,7 +66,7 @@ export default function ModalItem({
         <CheckoutButton
           onAddToOrder={isEdit ? editOrder : addToOrder}
           isChoices={order.choices && !order.choice}
-          buttonName="Добавить к заказу"
+          buttonName={isEdit ? 'Редактировать' : 'Добавить к заказу'}
         ></CheckoutButton>
       </div>
     </div>,

@@ -8,7 +8,6 @@ import { localizePrice, totalPrice } from '../../functions/secondaryFunctions';
 
 export default function Order({ orders, setOrders, setOpenItem }) {
   const [isOrderOpen, setIsOrderOpen] = useState(false);
-  console.log(orders);
 
   const toggleOrderWindow = () => setIsOrderOpen(!isOrderOpen);
 
@@ -33,7 +32,7 @@ export default function Order({ orders, setOrders, setOpenItem }) {
         type="button"
         onClick={() => toggleOrderWindow()}
       >
-        {isOrderOpen ? (
+        {!isOrderOpen ? (
           <GiCardboardBox size="60" color="#FFDF1F" />
         ) : (
           <FaBox size="40" color="#FFDF1F" />
