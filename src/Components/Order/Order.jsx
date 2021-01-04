@@ -69,7 +69,18 @@ export default function Order({
         <span>Кол-во: {countTotalItem()}</span>
         <span>Сумма: {localizePrice(price)}</span>
       </div>
-      <CheckoutButton buttonName="Оформить" auth={authentication} />
+      <button
+        onClick={() => {
+          if (authentication) {
+            console.log(orders);
+          } else {
+            logIn();
+          }
+        }}
+      >
+        Оформить
+      </button>
+      <CheckoutButton buttonName="Оформить" />
     </section>
   );
 }

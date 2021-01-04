@@ -29,7 +29,7 @@ function App() {
   return (
     <>
       <NavBar {...auth} />
-      <Order {...orders} {...openItem} authentication={auth} />
+      <Order {...orders} {...openItem} {...auth} />
       <Menu {...openItem} />
       {openItem.openItem && <ModalItem {...openItem} {...orders} />}
     </>
