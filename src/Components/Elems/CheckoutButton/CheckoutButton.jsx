@@ -4,12 +4,14 @@ export default function CheckoutButton({
   onAddToOrder,
   buttonName,
   isChoices,
+  authentication,
+  logIn,
 }) {
   return (
     <button
       className={s.checkoutBtn}
       type="button"
-      onClick={() => onAddToOrder()}
+      onClick={authentication ? () => onAddToOrder() : logIn}
       disabled={isChoices}
     >
       {buttonName}

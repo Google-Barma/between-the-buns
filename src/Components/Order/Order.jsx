@@ -6,7 +6,13 @@ import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import OrderListItem from './OrderListItem';
 import { localizePrice, totalPrice } from '../../functions/secondaryFunctions';
 
-export default function Order({ orders, setOrders, setOpenItem }) {
+export default function Order({
+  orders,
+  setOrders,
+  setOpenItem,
+  authentication,
+  logIn,
+}) {
   const [isOrderOpen, setIsOrderOpen] = useState(false);
 
   const toggleOrderWindow = () => setIsOrderOpen(!isOrderOpen);
@@ -63,7 +69,7 @@ export default function Order({ orders, setOrders, setOpenItem }) {
         <span>Кол-во: {countTotalItem()}</span>
         <span>Сумма: {localizePrice(price)}</span>
       </div>
-      <CheckoutButton buttonName="Оформить"></CheckoutButton>
+      <CheckoutButton buttonName="Оформить" auth={authentication} />
     </section>
   );
 }

@@ -1,13 +1,25 @@
 import { useEffect, useState } from 'react';
 
 export default function useAuth(authFirebase) {
-  const [authentication, setauthentication] = useState(null);
+  const [authentication, setAuthentication] = useState(null);
 
-  const provider = 'google';
+  const auth = authFirebase();
 
-  const login = () => provider;
+  const provider = new authFirebase.GoogleAuthProvider();
 
-  useEffect(() => {}, [authentication]);
+  const logIn = () => auth.signInWithPopup(provider);
 
-  return { authentication, login };
+  const logOut = () => auth.signOut().catch(err => console.log(err));
+
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        setAuthentication(user);
+      } else {
+        setAuthentication(null);
+      }
+    });
+  }, [authentication]);
+
+  return { authentication, logIn, logOut };
 }

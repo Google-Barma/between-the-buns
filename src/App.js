@@ -6,7 +6,7 @@ import ModalItem from './Components/Modal/ModalItem';
 import Order from './Components/Order/Order';
 import useOpenItem from './Components/Hooks/useOpenItem';
 import useOrders from './Components/Hooks/useOrders';
-import { useAuth } from './Components/Hooks/useAuth';
+import useAuth from './Components/Hooks/useAuth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyADUneUpQcNzlbOX2HhF5GvRVCTLFU1WyY',
@@ -23,14 +23,13 @@ firebase.initializeApp(firebaseConfig);
 
 function App() {
   const auth = useAuth(firebase.auth);
-
   const openItem = useOpenItem();
   const orders = useOrders();
 
   return (
     <>
-      <NavBar />
-      <Order {...orders} {...openItem} />
+      <NavBar {...auth} />
+      <Order {...orders} {...openItem} authentication={auth} />
       <Menu {...openItem} />
       {openItem.openItem && <ModalItem {...openItem} {...orders} />}
     </>
