@@ -65,7 +65,7 @@ export default function OrderConfirm() {
             </button>
           </>
         ) : (
-          <div>Спасибо за заказ</div>
+          <span>Спасибо за заказ</span>
         )}
       </div>
     </Overlay>
