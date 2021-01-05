@@ -1,41 +1,18 @@
+import { useState, useContext } from 'react';
 import s from './Order.module.css';
-import { useState } from 'react';
 import { GiCardboardBox } from 'react-icons/gi';
 import { FaBox } from 'react-icons/fa';
 import OrderListItem from './OrderListItem';
 import { localizePrice, totalPrice } from '../../helpers/helpers';
-import { projection } from '../../helpers/helpers';
+import { Context } from '../../helpers/context';
 
-const rulesData = {
-  name: ['name'],
-  price: ['price'],
-  count: ['count'],
-  topping: [
-    'topping',
-    arr => arr.filter(obj => obj.checked === true).map(obj => obj.name),
-    arr => (arr.length ? arr : 'no topping'),
-  ],
-  choice: ['choice', item => (item ? item : 'no choices')],
-};
-
-export default function Order({
-  orders,
-  setOrders,
-  setOpenItem,
-  authentication,
-  logIn,
-  database,
-}) {
-  const sendOrder = () => {
-    const newOrder = orders.map(projection(rulesData));
-
-    database.ref('orders').push().set({
-      nameClient: authentication.displayName,
-      email: authentication.email,
-      order: newOrder,
-    });
-    setOrders([]);
-  };
+export default function Order() {
+  const {
+    orders: { orders, setOrders },
+    auth: { authentication, logIn },
+    openItem: { setOpenItem },
+    orderConfirm: { setOpenOrderConfirm },
+  } = useContext(Context);
 
   const [isOrderOpen, setIsOrderOpen] = useState(false);
 
@@ -97,7 +74,7 @@ export default function Order({
       <button
         onClick={() => {
           if (authentication) {
-            sendOrder();
+            setOpenOrderConfirm(true);
           } else {
             logIn();
           }
