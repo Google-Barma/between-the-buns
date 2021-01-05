@@ -51,8 +51,18 @@
 .orderResult {
   display: flex;
   flex-direction: column;
+  margin-bottom: 25px;
 }
 
 .emptyList {
   text-align: center;
+}
+
+.button {
+  font-size: 25px;
+  max-width: 100%;
+  height: 50px;
+  background-color: #ffdf1f;
+  border-radius: 5px;
+  border-color: transparent;
 }

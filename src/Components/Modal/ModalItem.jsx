@@ -58,20 +58,34 @@ export default function ModalItem() {
         <div className={s.modal}>
           <h2 className={s.title}>{openItem.name}</h2>
           <div className={s.imageWrapper}>
-            <img className={s.image} src={openItem.img} alt={openItem.name} />
+            <img
+              className={s.image}
+              src={openItem.img}
+              alt={openItem.name}
+              width="400"
+            />
           </div>
 
-          {openItem.toppings && <Toppings />}
-          {openItem.choices && <Choices />}
+          <div className={s.orderBlock}>
+            <div className={s.count}>
+              <CountItem />
+            </div>
 
-          <p className={s.price}>Цена: {openItem.price}</p>
-          <p>Общая сумма: {localizePrice(total)}</p>
-          <CountItem />
-          <CheckoutButton
-            onAddToOrder={isEdit ? editOrder : addToOrder}
-            isChoices={order.choices && !order.choice}
-            buttonName={isEdit ? 'Редактировать' : 'Добавить к заказу'}
-          ></CheckoutButton>
+            <div className={s.toppings}>
+              {openItem.toppings && <Toppings />}
+              {openItem.choices && <Choices />}
+            </div>
+
+            <div className={s.total}>
+              <p className={s.price}>Цена: {openItem.price}</p>
+              <p>Общая сумма: {localizePrice(total)}</p>
+              <CheckoutButton
+                onAddToOrder={isEdit ? editOrder : addToOrder}
+                isChoices={order.choices && !order.choice}
+                buttonName={isEdit ? 'Редактировать' : 'Добавить к заказу'}
+              />
+            </div>
+          </div>
         </div>
       </Overlay>
     </ContextItem.Provider>,

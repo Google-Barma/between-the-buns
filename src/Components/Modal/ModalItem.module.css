@@ -1,16 +1,10 @@
 .modal {
+  position: relative;
   background-color: rgba(26, 26, 26, 0.9);
   width: 800px;
-  height: 800px;
+  height: 700px;
   border-radius: 10px;
   padding: 25px;
-}
-
-.banner {
-  width: 100%;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
 }
 
 .title {
@@ -24,4 +18,26 @@
   margin: 0 auto;
   display: flex;
   justify-content: center;
+}
+
+.orderBlock {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+}
+
+.count {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.toppings {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.total {
+  margin-bottom: 25px;
 }
