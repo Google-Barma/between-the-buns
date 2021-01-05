@@ -1,6 +1,12 @@
+import { useContext } from 'react';
+import { ContextItem } from '../../../helpers/contextItem';
 import s from './CountItem.module.css';
 
-export default function CountItem({ count, setCount, handleChangeCount }) {
+export default function CountItem() {
+  const {
+    counter: { count, setCount, handleChangeCount },
+  } = useContext(ContextItem);
+
   return (
     <div>
       <button

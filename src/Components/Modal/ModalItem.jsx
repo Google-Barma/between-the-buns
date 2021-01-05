@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { createPortal } from 'react-dom';
 import s from './ModalItem.module.css';
 import useCount from '../Hooks/useCount';
@@ -5,18 +6,20 @@ import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import CountItem from '../Elems/CountItem/CountItem';
 import { localizePrice, totalPrice } from '../../helpers/helpers';
 import Toppings from './Toppings/Toppings';
-import Choices from './Choices';
+import Choices from './Choices/Choices';
 import useToppings from '../Hooks/useToppings';
 import useChoices from '../Hooks/useChoices';
+import Overlay from '../Elems/Overlay/Overlay';
+import { Context } from '../../helpers/context';
+import { ContextItem } from '../../helpers/contextItem';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export default function ModalItem({
-  openItem,
-  setOpenItem,
-  orders,
-  setOrders,
-}) {
+export default function ModalItem() {
+  const {
+    orders: { orders, setOrders },
+    openItem: { openItem, setOpenItem },
+  } = useContext(Context);
   const counter = useCount(openItem.count);
   const toppings = useToppings(openItem);
   const choices = useChoices(openItem);
@@ -50,26 +53,28 @@ export default function ModalItem({
   const total = totalPrice(order);
 
   return createPortal(
-    <div className={s.overlay} id="overlay" onClick={closeModal}>
-      <div className={s.modal}>
-        <h2 className={s.title}>{openItem.name}</h2>
-        <div className={s.imageWrapper}>
-          <img className={s.image} src={openItem.img} alt={openItem.name} />
+    <ContextItem.Provider value={{ toppings, choices, openItem, counter }}>
+      <Overlay id="overlay" className={s.overlay} fn={closeModal}>
+        <div className={s.modal}>
+          <h2 className={s.title}>{openItem.name}</h2>
+          <div className={s.imageWrapper}>
+            <img className={s.image} src={openItem.img} alt={openItem.name} />
+          </div>
+
+          {openItem.toppings && <Toppings />}
+          {openItem.choices && <Choices />}
+
+          <p className={s.price}>Цена: {openItem.price}</p>
+          <p>Общая сумма: {localizePrice(total)}</p>
+          <CountItem />
+          <CheckoutButton
+            onAddToOrder={isEdit ? editOrder : addToOrder}
+            isChoices={order.choices && !order.choice}
+            buttonName={isEdit ? 'Редактировать' : 'Добавить к заказу'}
+          ></CheckoutButton>
         </div>
-
-        {openItem.toppings && <Toppings {...toppings} />}
-        {openItem.choices && <Choices {...choices} openItem={openItem} />}
-
-        <p className={s.price}>Цена: {openItem.price}</p>
-        <p>Общая сумма: {localizePrice(total)}</p>
-        <CountItem {...counter} />
-        <CheckoutButton
-          onAddToOrder={isEdit ? editOrder : addToOrder}
-          isChoices={order.choices && !order.choice}
-          buttonName={isEdit ? 'Редактировать' : 'Добавить к заказу'}
-        ></CheckoutButton>
-      </div>
-    </div>,
+      </Overlay>
+    </ContextItem.Provider>,
     modalRoot,
   );
 }

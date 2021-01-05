@@ -1,16 +1,18 @@
+import { useContext } from 'react';
 import { GiHamburger, GiSushis, GiMouthWatering } from 'react-icons/gi';
 import s from './Menu.module.css';
 import ItemsList from './ItemsList/ItemsList';
 import Banner from './Banner';
 import Section from '../Layouts/Section';
-import useFetch from '../Hooks/useFetch';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
+import { Context } from '../../helpers/context';
 
-export default function Menu({ setOpenItem }) {
-  const res = useFetch();
-
-  const dbMenu = res.response;
+export default function Menu() {
+  const {
+    openItem: { setOpenItem },
+    dbMenu,
+  } = useContext(Context);
 
   return (
     <main className={s.main}>
@@ -40,8 +42,6 @@ export default function Menu({ setOpenItem }) {
             <ItemsList itemList={dbMenu.other} setOpenItem={setOpenItem} />
           </Section>
         </>
-      ) : res.error ? (
-        <div>Sorry, we will fixed it soon...</div>
       ) : (
         <div className={s.loaderWrapper}>
           <Loader color="#FFDF1F" type="Puff" height={100} width={100} />

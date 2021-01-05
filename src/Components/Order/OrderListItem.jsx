@@ -26,7 +26,8 @@ export default function OrderListItem({
         onClick={e => setOpenItem({ ...order, index })}
       >
         <p className={s.name}>{order.name}</p>
-        <p className={s.name}>{order.choices && order.choices}</p>
+        {order.choice && <p> {order.choice}</p>}
+        {topping && <p>{topping}</p>}
 
         <span className={s.quantity}>{order.count} шт.</span>
         <span className={s.price}>{localizePrice(price)}</span>
@@ -40,7 +41,6 @@ export default function OrderListItem({
       >
         <GiTrashCan size="35" color="#FFDF1F" />
       </button>
-      {topping && <p>{topping}</p>}
     </li>
   );
 }
