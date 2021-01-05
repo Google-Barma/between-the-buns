@@ -1,0 +1,14 @@
+.modal {
+  max-width: 600px;
+  padding: 30px;
+  background-color: rgb(52, 52, 52);
+  border-radius: 5px;
+}
+
+.orderTitle {
+  font-size: 35px;
+}
+
+.price {
+  display: block;
+}
