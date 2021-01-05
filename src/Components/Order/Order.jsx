@@ -36,6 +36,7 @@ export default function Order({
       email: authentication.email,
       order: newOrder,
     });
+    setOrders([]);
   };
 
   const [isOrderOpen, setIsOrderOpen] = useState(false);
@@ -99,7 +100,6 @@ export default function Order({
         onClick={() => {
           if (authentication) {
             sendOrder();
-            setOrders([]);
           } else {
             logIn();
           }
