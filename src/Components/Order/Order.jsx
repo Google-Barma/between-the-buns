@@ -53,6 +53,7 @@ export default function Order({
             {orders.map((order, idx) => (
               <OrderListItem
                 order={order}
+                key={order.id}
                 id={order.id}
                 index={idx}
                 onDeleteItem={deleteItemFromOrder}
@@ -80,7 +81,6 @@ export default function Order({
       >
         Оформить
       </button>
-      <CheckoutButton buttonName="Оформить" />
     </section>
   );
 }

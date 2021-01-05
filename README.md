@@ -1,3 +1,5 @@
 # Between The Buns
 
-[Create React App](https://github.com/facebook/create-react-app).
+[HomePage](https://betweenthebuns-666fd.web.app/).
+
+Used to create: create-react-app, react, firebase
