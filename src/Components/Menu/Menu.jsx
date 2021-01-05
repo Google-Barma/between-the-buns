@@ -3,14 +3,14 @@ import s from './Menu.module.css';
 import ItemsList from './ItemsList/ItemsList';
 import Banner from './Banner';
 import Section from '../Layouts/Section';
-import useFetch from '../Hooks/useFetch';
+// import useFetch from '../Hooks/useFetch';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
 
-export default function Menu({ setOpenItem }) {
-  const res = useFetch();
+export default function Menu({ setOpenItem, dbMenu }) {
+  // const res = useFetch();
 
-  const dbMenu = res.response;
+  // const dbMenu = res.response;
 
   return (
     <main className={s.main}>
@@ -40,8 +40,6 @@ export default function Menu({ setOpenItem }) {
             <ItemsList itemList={dbMenu.other} setOpenItem={setOpenItem} />
           </Section>
         </>
-      ) : res.error ? (
-        <div>Sorry, we will fixed it soon...</div>
       ) : (
         <div className={s.loaderWrapper}>
           <Loader color="#FFDF1F" type="Puff" height={100} width={100} />

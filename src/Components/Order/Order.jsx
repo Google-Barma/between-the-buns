@@ -24,10 +24,8 @@ export default function Order({
   setOpenItem,
   authentication,
   logIn,
-  firebaseDatabase,
+  database,
 }) {
-  const database = firebaseDatabase();
-
   const sendOrder = () => {
     const newOrder = orders.map(projection(rulesData));
 
