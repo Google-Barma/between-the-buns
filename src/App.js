@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 import NavBar from './Components/NavBar/NavBar';
 import Menu from './Components/Menu/Menu';
 import ModalItem from './Components/Modal/ModalItem';
@@ -29,7 +30,12 @@ function App() {
   return (
     <>
       <NavBar {...auth} />
-      <Order {...orders} {...openItem} {...auth} />
+      <Order
+        {...orders}
+        {...openItem}
+        {...auth}
+        firebaseDatabase={firebase.database}
+      />
       <Menu {...openItem} />
       {openItem.openItem && <ModalItem {...openItem} {...orders} />}
     </>

@@ -13,4 +13,16 @@ function totalPrice(order) {
   return (order.price + priceTopping) * order.count;
 }
 
-export { localizePrice, totalPrice };
+function projection(rules) {
+  const keys = Object.keys(rules);
+  return obj =>
+    keys.reduce((newObj, key) => {
+      newObj[key] = rules[key].reduce(
+        (value, fn, i) => (i ? fn(value) : obj[fn]),
+        null,
+      );
+      return newObj;
+    }, {});
+}
+
+export { localizePrice, totalPrice, projection };

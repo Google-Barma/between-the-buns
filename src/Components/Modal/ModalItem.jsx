@@ -3,7 +3,7 @@ import s from './ModalItem.module.css';
 import useCount from '../Hooks/useCount';
 import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import CountItem from '../Elems/CountItem/CountItem';
-import { localizePrice, totalPrice } from '../../functions/secondaryFunctions';
+import { localizePrice, totalPrice } from '../../helpers/helpers';
 import Toppings from './Toppings/Toppings';
 import Choices from './Choices';
 import useToppings from '../Hooks/useToppings';

@@ -8,7 +8,11 @@ export default function NavBar({ authentication, logIn, logOut }) {
       <div className={s.wrapper}>
         <Logo />
         {authentication ? (
-          <button onClick={logOut}>X</button>
+          <>
+            <p>{authentication ? authentication.displayName : null}</p>
+            <p>{authentication ? authentication.email : null}</p>
+            <button onClick={logOut}>X</button>
+          </>
         ) : (
           <button className={s.loginBtn} type="button" onClick={logIn}>
             <ImPacman size="32" className={s.loginImage} />

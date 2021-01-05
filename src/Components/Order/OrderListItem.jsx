@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { GiTrashCan } from 'react-icons/gi';
 import s from './OrderListItem.module.css';
-import { localizePrice, totalPrice } from '../../functions/secondaryFunctions';
+import { localizePrice, totalPrice } from '../../helpers/helpers';
 
 export default function OrderListItem({
   order,

@@ -2,9 +2,21 @@ import s from './Order.module.css';
 import { useState } from 'react';
 import { GiCardboardBox } from 'react-icons/gi';
 import { FaBox } from 'react-icons/fa';
-import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 import OrderListItem from './OrderListItem';
-import { localizePrice, totalPrice } from '../../functions/secondaryFunctions';
+import { localizePrice, totalPrice } from '../../helpers/helpers';
+import { projection } from '../../helpers/helpers';
+
+const rulesData = {
+  name: ['name'],
+  price: ['price'],
+  count: ['count'],
+  topping: [
+    'topping',
+    arr => arr.filter(obj => obj.checked === true).map(obj => obj.name),
+    arr => (arr.length ? arr : 'no topping'),
+  ],
+  choice: ['choice', item => (item ? item : 'no choices')],
+};
 
 export default function Order({
   orders,
@@ -12,7 +24,20 @@ export default function Order({
   setOpenItem,
   authentication,
   logIn,
+  firebaseDatabase,
 }) {
+  const database = firebaseDatabase();
+
+  const sendOrder = () => {
+    const newOrder = orders.map(projection(rulesData));
+
+    database.ref('orders').push().set({
+      nameClient: authentication.displayName,
+      email: authentication.email,
+      order: newOrder,
+    });
+  };
+
   const [isOrderOpen, setIsOrderOpen] = useState(false);
 
   const toggleOrderWindow = () => setIsOrderOpen(!isOrderOpen);
@@ -73,7 +98,8 @@ export default function Order({
       <button
         onClick={() => {
           if (authentication) {
-            console.log(orders);
+            sendOrder();
+            setOrders([]);
           } else {
             logIn();
           }
