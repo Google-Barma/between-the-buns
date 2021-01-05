@@ -2,4 +2,4 @@
 
 [HomePage](https://betweenthebuns-666fd.web.app/).
 
-Used to create: create-react-app, react, firebase
+Used to create: create-react-app, react, firebase.auth, firebase.database

@@ -53,3 +53,8 @@
   font-style: italic;
   text-align: right;
 }
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+}

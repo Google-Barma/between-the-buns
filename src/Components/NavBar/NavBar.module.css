@@ -34,3 +34,10 @@
   color: white;
   text-transform: uppercase;
 }
+
+.signOutBtn {
+  color: #ffffff;
+  background-color: transparent;
+  padding: 5px;
+  border-color: transparent;
+}

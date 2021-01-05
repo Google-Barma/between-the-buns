@@ -11,7 +11,9 @@ export default function NavBar({ authentication, logIn, logOut }) {
           <>
             <p>{authentication ? authentication.displayName : null}</p>
             <p>{authentication ? authentication.email : null}</p>
-            <button onClick={logOut}>X</button>
+            <button className={s.signOutBtn} onClick={logOut}>
+              Выйти
+            </button>
           </>
         ) : (
           <button className={s.loginBtn} type="button" onClick={logIn}>
