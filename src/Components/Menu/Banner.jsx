@@ -11,10 +11,9 @@ export default function Banner() {
       </div>
       <div className={s.descriptionWrapper}>
         <p className={s.description}>
-          Мы работаем с <span>11:00</span> и до <span>22:45</span>, поэтому
-          сейчас не сможем привезти для Вас еду. Если Вы хотите сделать
-          предзаказ - укажите, пожалуйста, в комментариях к заказу на какое
-          время. С любовью, BetweenTheBuns.
+          Мы работаем с <span>11:00</span> и до <span>22:45</span>. <hr /> Если
+          Вы хотите сделать предзаказ - укажите, пожалуйста, в комментариях к
+          заказу на какое время. С любовью, BetweenTheBuns.
         </p>
       </div>
     </div>
