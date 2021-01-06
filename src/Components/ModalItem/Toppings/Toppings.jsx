@@ -10,7 +10,7 @@ export default function Toppings() {
   return (
     <ul className={s.toppingsWrapper}>
       {toppings.map((topping, idx) => (
-        <li key={idx}>
+        <li className={s.item} key={idx}>
           <label className={s.label} htmlFor={topping.name}>
             <input
               className={s.input}

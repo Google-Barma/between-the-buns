@@ -4,6 +4,7 @@ import Overlay from '../Elems/Overlay/Overlay';
 import { projection } from '../../helpers/helpers';
 import { localizePrice, totalPrice } from '../../helpers/helpers';
 import { Context } from '../../helpers/context';
+import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 
 const rulesData = {
   name: ['name'],
@@ -42,7 +43,14 @@ export default function OrderConfirm() {
     0,
   );
 
-  console.log(countTotalPrice);
+  const handleOrderBtn = () => {
+    sendOrder(database, orders, authentication);
+    setOrders([]);
+    setClose(true);
+    setTimeout(() => {
+      setOpenOrderConfirm(false);
+    }, 3000);
+  };
 
   return (
     <Overlay id="overlay" fn={setOpenOrderConfirm}>
@@ -50,21 +58,17 @@ export default function OrderConfirm() {
         {!close ? (
           <>
             <h2 className={s.orderTitle}>{authentication.displayName}</h2>
-            <h3 className={s.text}>Осталось только подтвердить заказ.</h3>
-            <p>Итого:</p>
+            <h3 className={s.text}>
+              Вам осталось только подтвердить заказ на общую сумму:
+            </h3>
+
             <span className={s.price}>{localizePrice(countTotalPrice)}</span>
-            <button
-              onClick={() => {
-                sendOrder(database, orders, authentication);
-                setOrders([]);
-                setClose(true);
-                setTimeout(() => {
-                  setOpenOrderConfirm(false);
-                }, 3000);
-              }}
-            >
-              Подтвердить
-            </button>
+            <div className={s.btnWrapper}>
+              <CheckoutButton
+                buttonName="Подтвердить"
+                onPushBtn={handleOrderBtn}
+              />
+            </div>
           </>
         ) : (
           <span>Спасибо за заказ</span>

@@ -10,9 +10,9 @@ export default function Choices() {
 
   return (
     <ul className={s.choiceWrapper}>
-      <h3>Выбирайте:</h3>
+      <h3 className={s.title}>Выбирайте:</h3>
       {openItem.choices.map((item, idx) => (
-        <li key={idx}>
+        <li className={s.item} key={idx}>
           <label className={s.label}>
             <input
               className={s.input}

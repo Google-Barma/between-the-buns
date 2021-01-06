@@ -10,6 +10,10 @@
   margin-left: 5px;
 }
 
-.label:not(:last-child) {
-  margin-right: 15px;
+.label:hover {
+  color: #ffdf1f;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 15px;
 }

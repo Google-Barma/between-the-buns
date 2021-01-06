@@ -2,5 +2,14 @@
   width: 20px;
 }
 
-.label {
+.label:hover {
+  color: #ffdf1f;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.title {
+  margin-bottom: 20px;
 }

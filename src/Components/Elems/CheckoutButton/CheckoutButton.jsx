@@ -1,15 +1,11 @@
 import s from './CheckoutButton.module.css';
 
-export default function CheckoutButton({
-  onAddToOrder,
-  buttonName,
-  isChoices,
-}) {
+export default function CheckoutButton({ onPushBtn, buttonName, isChoices }) {
   return (
     <button
       className={s.checkoutBtn}
       type="button"
-      onClick={() => onAddToOrder()}
+      onClick={() => onPushBtn()}
       disabled={isChoices}
     >
       {buttonName}

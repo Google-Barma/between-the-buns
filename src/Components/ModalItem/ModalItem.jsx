@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { createPortal } from 'react-dom';
 import s from './ModalItem.module.css';
 import useCount from '../Hooks/useCount';
@@ -20,6 +20,7 @@ export default function ModalItem() {
     orders: { orders, setOrders },
     openItem: { openItem, setOpenItem },
   } = useContext(Context);
+
   const counter = useCount(openItem.count);
   const toppings = useToppings(openItem);
   const choices = useChoices(openItem);
@@ -72,7 +73,7 @@ export default function ModalItem() {
               <p className={s.price}>Цена: {openItem.price}</p>
               <p className={s.total}>Общая сумма: {localizePrice(total)}</p>
               <CheckoutButton
-                onAddToOrder={isEdit ? editOrder : addToOrder}
+                onPushBtn={isEdit ? editOrder : addToOrder}
                 isChoices={order.choices && !order.choice}
                 buttonName={isEdit ? 'Редактировать' : 'Добавить к заказу'}
               />

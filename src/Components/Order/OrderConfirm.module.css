@@ -1,14 +1,26 @@
 .modal {
   max-width: 600px;
-  padding: 30px;
+  padding: 50px;
   background-color: rgb(52, 52, 52);
   border-radius: 5px;
 }
 
 .orderTitle {
   font-size: 35px;
+  margin-bottom: 30px;
+  color: #ffdf1f;
+}
+
+.text {
+  margin-bottom: 30px;
 }
 
 .price {
   display: block;
+  margin-bottom: 30px;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: flex-end;
 }

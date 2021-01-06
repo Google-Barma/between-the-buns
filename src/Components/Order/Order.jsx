@@ -5,6 +5,7 @@ import { FaBox } from 'react-icons/fa';
 import OrderListItem from './OrderListItem';
 import { localizePrice, totalPrice } from '../../helpers/helpers';
 import { Context } from '../../helpers/context';
+import CheckoutButton from '../Elems/CheckoutButton/CheckoutButton';
 
 export default function Order() {
   const {
@@ -71,19 +72,17 @@ export default function Order() {
         <span>Кол-во: {countTotalItem()}</span>
         <span>Сумма: {localizePrice(price)}</span>
       </div>
-      <button
-        disabled={!countTotalItem()}
-        className={s.button}
-        onClick={() => {
+      <CheckoutButton
+        isChoices={!countTotalItem()}
+        buttonName="Оформить"
+        onPushBtn={() => {
           if (authentication) {
             setOpenOrderConfirm(true);
           } else {
             logIn();
           }
         }}
-      >
-        Оформить
-      </button>
+      />
     </section>
   );
 }
