@@ -1,5 +1,5 @@
 .input {
-  width: 20px;
+  width: 10px;
 }
 
 .label:hover {
@@ -12,4 +12,10 @@
 
 .title {
   margin-bottom: 20px;
+}
+
+@media (min-width: 1025px) {
+  .input {
+    width: 20px;
+  }
 }

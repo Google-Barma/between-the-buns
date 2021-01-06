@@ -1,8 +1,8 @@
 .input {
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 5px;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .label {
@@ -16,4 +16,12 @@
 
 .item:not(:last-child) {
   margin-bottom: 15px;
+}
+
+@media (min-width: 1025px) {
+  .input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
 }

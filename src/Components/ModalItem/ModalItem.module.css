@@ -1,22 +1,20 @@
 .modal {
   position: relative;
   background-color: rgba(26, 26, 26, 0.9);
-  width: 800px;
-  height: 700px;
+  width: 350px;
+  height: 500px;
   border-radius: 10px;
   padding: 25px;
 }
 
 .title {
   text-transform: uppercase;
-  font-size: 50px;
+  font-size: 30px;
   text-align: right;
   margin-bottom: 30px;
 }
 
 .imageWrapper {
-  padding-left: 30px;
-  margin: 0 auto;
   display: flex;
   justify-content: flex-start;
 }
@@ -30,7 +28,7 @@
 .count {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
 }
 
 .total {
@@ -40,9 +38,42 @@
 .toppings {
   position: absolute;
   padding: 50px;
-  top: 150px;
-  right: 25px;
+  top: 50px;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .image {
+    width: 200px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .modal {
+    width: 800px;
+    height: 700px;
+  }
+
+  .imageWrapper {
+    margin: 0 auto;
+    padding-left: 30px;
+  }
+
+  .title {
+    font-size: 50px;
+  }
+
+  .count {
+    margin-bottom: 35px;
+  }
+
+  .toppings {
+    top: 150px;
+    right: 25px;
+    font-size: 20px;
+  }
 }
