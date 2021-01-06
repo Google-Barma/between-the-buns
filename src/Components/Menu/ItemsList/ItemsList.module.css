@@ -1,8 +1,8 @@
 .list {
-  max-width: 1600px;
+  max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 35px;
 }
 
@@ -30,10 +30,16 @@
 
 .image {
   position: relative;
-  top: -35px;
+  top: -25px;
   transition: all 0.3s linear;
 }
 
 .item:hover .image {
   transform: rotate(5deg) scale(1.1);
+}
+
+@media (min-width: 1024px) {
+  .image {
+    top: -35px;
+  }
 }

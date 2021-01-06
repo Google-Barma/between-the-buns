@@ -63,3 +63,7 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+
+#root {
+  padding: 0 15px 0 15px;
+}

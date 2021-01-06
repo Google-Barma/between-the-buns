@@ -15,8 +15,12 @@ export default function NavBar() {
         <Logo />
         {authentication ? (
           <>
-            <p>{authentication ? authentication.displayName : null}</p>
-            <p>{authentication ? authentication.email : null}</p>
+            <p className={s.userName}>
+              {authentication ? authentication.displayName : null}
+            </p>
+            <p className={s.userEmail}>
+              {authentication ? authentication.email : null}
+            </p>
             <button className={s.signOutBtn} onClick={logOut}>
               Выйти
             </button>
