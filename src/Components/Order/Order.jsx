@@ -72,6 +72,7 @@ export default function Order() {
         <span>Сумма: {localizePrice(price)}</span>
       </div>
       <button
+        disabled={!countTotalItem()}
         className={s.button}
         onClick={() => {
           if (authentication) {

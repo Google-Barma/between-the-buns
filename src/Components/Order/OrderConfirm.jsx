@@ -42,8 +42,10 @@ export default function OrderConfirm() {
     0,
   );
 
+  console.log(countTotalPrice);
+
   return (
-    <Overlay>
+    <Overlay id="overlay" fn={setOpenOrderConfirm}>
       <div className={s.modal}>
         {!close ? (
           <>

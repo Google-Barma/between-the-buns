@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import s from './ModalItem.module.css';
 import useCount from '../Hooks/useCount';
@@ -25,12 +25,6 @@ export default function ModalItem() {
   const choices = useChoices(openItem);
   const isEdit = openItem.index > -1;
 
-  const closeModal = e => {
-    if (e.target.id === 'overlay') {
-      setOpenItem(null);
-    }
-  };
-
   const order = {
     ...openItem,
     count: counter.count,
@@ -54,7 +48,7 @@ export default function ModalItem() {
 
   return createPortal(
     <ContextItem.Provider value={{ toppings, choices, openItem, counter }}>
-      <Overlay id="overlay" className={s.overlay} fn={closeModal}>
+      <Overlay id="overlay" className={s.overlay} fn={setOpenItem}>
         <div className={s.modal}>
           <h2 className={s.title}>{openItem.name}</h2>
           <div className={s.imageWrapper}>
@@ -66,19 +60,17 @@ export default function ModalItem() {
             />
           </div>
 
-          <div className={s.orderBlock}>
+          <div className={s.toppings}>
             <div className={s.count}>
               <CountItem />
             </div>
-
-            <div className={s.toppings}>
-              {openItem.toppings && <Toppings />}
-              {openItem.choices && <Choices />}
-            </div>
-
-            <div className={s.total}>
+            {openItem.toppings && <Toppings />}
+            {openItem.choices && <Choices />}
+          </div>
+          <div className={s.orderBlock}>
+            <div>
               <p className={s.price}>Цена: {openItem.price}</p>
-              <p>Общая сумма: {localizePrice(total)}</p>
+              <p className={s.total}>Общая сумма: {localizePrice(total)}</p>
               <CheckoutButton
                 onAddToOrder={isEdit ? editOrder : addToOrder}
                 isChoices={order.choices && !order.choice}

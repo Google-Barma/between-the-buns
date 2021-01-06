@@ -17,7 +17,7 @@
 .imageWrapper {
   margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .orderBlock {
@@ -28,16 +28,20 @@
 
 .count {
   display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-
-.toppings {
-  display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   margin-bottom: 15px;
 }
 
 .total {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+}
+
+.toppings {
+  position: absolute;
+  padding: 50px;
+  top: 150px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
