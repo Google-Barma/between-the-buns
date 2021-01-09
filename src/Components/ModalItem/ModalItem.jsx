@@ -72,6 +72,7 @@ export default function ModalItem() {
             <div>
               <p className={s.price}>Цена: {openItem.price}</p>
               <p className={s.total}>Общая сумма: {localizePrice(total)}</p>
+
               <CheckoutButton
                 onPushBtn={isEdit ? editOrder : addToOrder}
                 isChoices={order.choices && !order.choice}
