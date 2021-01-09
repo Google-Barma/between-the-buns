@@ -29,6 +29,7 @@
 .title > span,
 .description > span {
   color: #ffdf1f;
+  font-style: italic;
 }
 
 .sectionTitleWrapper {
@@ -45,7 +46,8 @@
 
 .descriptionWrapper {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
 
   padding: 0 10px 0 10px;
 }
@@ -55,6 +57,12 @@
   max-width: 600px;
   font-style: italic;
   text-align: right;
+}
+
+.description:not(:last-child) {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ffffff;
 }
 
 .loaderWrapper {
